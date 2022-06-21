@@ -3,8 +3,8 @@ const fs = require('fs'); //load filesystem dependency
 const PORT = 8080; //set local port
 
 http.createServer(function (request, response) { //initate http server
-    var url = request.url; //get url from request
-    var page = `index` //set index page
+    let url = request.url; //get url from request
+    let page = `index` //set index page
     if (url != '/') {
         page = url.replace(/[^\w\s]/gi, '') //removes unsafe characters
         if (page == 'home') {
@@ -12,7 +12,7 @@ http.createServer(function (request, response) { //initate http server
         }
     }
     if (page.length >= 1) {
-        var pageUrl = `./views/${page}.html` //set filesystem from route variable
+        let pageUrl = `./views/${page}.html` //set filesystem from route variable
         fs.readFile(pageUrl, function (err, html) { //set filesystem from route
             if (err) {
                 response.writeHead(404);
